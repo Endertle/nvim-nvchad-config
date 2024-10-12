@@ -58,5 +58,43 @@ local plugins = {
       return opts
     end,
   },
+  {
+    "stevearc/oil.nvim",
+    keys = {
+      {
+        "-",
+        function()
+          require("oil").open()
+        end,
+      },
+    },
+    opts = {},
+
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+
+    config = function()
+      require("oil").setup {
+        default_file_explorer = true,
+        delete_to_trash = true,
+        view_options = {
+          show_hidden = true,
+        },
+        git = {
+          -- Return true to automatically git add/mv/rm files
+          add = function(path)
+            return true
+          end,
+          mv = function(src_path, dest_path)
+            return true
+          end,
+          rm = function(path)
+            return true
+          end,
+        },
+      }
+    end,
+  },
 }
 return plugins

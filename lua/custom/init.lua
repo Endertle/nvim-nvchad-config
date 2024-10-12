@@ -1,5 +1,2 @@
--- make line number relative 
+-- make line number relative
 vim.opt.relativenumber = true
-
-
-
